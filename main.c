@@ -7,7 +7,7 @@
 #define MAX_ARGUMENTS 10
 
 // test push
-// test test hi
+// test test hello
 
 // Function to call the appropriate function based on the function name
 void callFunction(char *funcName, char **args, int argCount) {
