@@ -6,9 +6,6 @@
 #define MAX_LINE_LENGTH 1024
 #define MAX_ARGUMENTS 10
 
-// test push
-// test test hello
-
 // Function to call the appropriate function based on the function name
 void callFunction(char *funcName, char **args, int argCount) {
     
@@ -19,32 +16,33 @@ void callFunction(char *funcName, char **args, int argCount) {
             printf("Invalid arguments for function: %s\n", funcName);
         }
     } 
-    
+
+
     // UNCOMMENT ME AFTER YOU HAVE WRITTEN MY FUNCTION
 
-    // else if (strcmp(funcName, "create_user") == 0) {
-    //     if (argCount >= 2) {
-    //         create_user(args[0], args[1]);
-    //     } else {
-    //         printf("Invalid arguments for %s\n", funcName);
-    //     }
-    // } 
+     else if (strcmp(funcName, "create_user") == 0) {
+         if (argCount >= 2) {
+             create_user(args[0], args[1]);
+         } else {
+             printf("Invalid arguments for %s\n", funcName);
+         }
+     }
 
-    // else if (strcmp(funcName, "print_users") == 0) {
-    //     if (argCount >= 0) {
-    //         print_users();
-    //     } else {
-    //         printf("Invalid arguments for %s\n", funcName);
-    //     }
-    // } 
+     else if (strcmp(funcName, "print_users") == 0) {
+         if (argCount >= 0) {
+             print_users();
+         } else {
+             printf("Invalid arguments for %s\n", funcName);
+         }
+     }
 
-    // else if (strcmp(funcName, "search_user_by_name") == 0) {
-    //     if (argCount >= 1) {
-    //         search_user_by_name(args[0]);
-    //     } else {
-    //         printf("Invalid arguments for %s\n", funcName);
-    //     }
-    // } 
+     else if (strcmp(funcName, "search_user_by_name") == 0) {
+         if (argCount >= 1) {
+             search_user_by_name(args[0]);
+         } else {
+             printf("Invalid arguments for %s\n", funcName);
+         }
+     }
 
     // else if (strcmp(funcName, "search_user_by_email") == 0) {
     //     if (argCount >= 1) {
@@ -54,13 +52,13 @@ void callFunction(char *funcName, char **args, int argCount) {
     //     }
     // } 
 
-    // else if (strcmp(funcName, "delete_user") == 0) {
-    //     if (argCount >= 1) {
-    //         delete_user(search_user_by_name(args[0]));
-    //     } else {
-    //         printf("Invalid arguments for %s\n", funcName);
-    //     }
-    // } 
+     else if (strcmp(funcName, "delete_user") == 0) {
+         if (argCount >= 1) {
+             delete_user(search_user_by_name(args[0]));
+         } else {
+             printf("Invalid arguments for %s\n", funcName);
+         }
+     }
 
     // else if (strcmp(funcName, "change_user_name") == 0) {
     //     if (argCount >= 2) {
@@ -78,13 +76,13 @@ void callFunction(char *funcName, char **args, int argCount) {
     //     }
     // } 
 
-    // else if (strcmp(funcName, "add_friend") == 0) {
-    //     if (argCount >= 2) {
-    //         add_friend(search_user_by_name(args[0]), search_user_by_name(args[1]));
-    //     } else {
-    //         printf("Invalid arguments for %s\n", funcName);
-    //     }
-    // } 
+     else if (strcmp(funcName, "add_friend") == 0) {
+         if (argCount >= 2) {
+             add_friend(search_user_by_name(args[0]), search_user_by_name(args[1]));
+         } else {
+             printf("Invalid arguments for %s\n", funcName);
+         }
+     }
 
     // else if (strcmp(funcName, "delete_friend") == 0) {
     //     if (argCount >= 2) {
@@ -146,27 +144,38 @@ int main() {
         return 1;
     }
 
-    char line[MAX_LINE_LENGTH];
-    while (fgets(line, sizeof(line), file)) {
-        char *token;
-        char *funcName = NULL;
-        char *args[MAX_ARGUMENTS];
-        int argCount = 0;
+    User *user1 = create_user("kabeer", "kabeermakkar28@gmail.com");
+    User *user2 = create_user("hamza", "hamza@gmail.com");
+    User *user3 = create_user("shehraj", "shehraj@gmail.com");
+    User *user4 = create_user("drake", "kendrickbetter@gmail.com");
 
-        token = strtok(line, ",\n");
-        while (token != NULL) {
-            if (funcName == NULL) {
-                funcName = token;
-            } else {
-                args[argCount++] = token;
-            }
-            token = strtok(NULL, ",\n");
-        }
+    print_users();
 
-        if (funcName != NULL) {
-            callFunction(funcName, args, argCount);
-        }
-    }
+    add_friend(user1, user2);
+    add_friend(user3, user2);
+
+  //  print_friends(user1);
+//    char line[MAX_LINE_LENGTH];
+//    while (fgets(line, sizeof(line), file)) {
+//        char *token;
+//        char *funcName = NULL;
+//        char *args[MAX_ARGUMENTS];
+//        int argCount = 0;
+//
+//        token = strtok(line, ",\n");
+//        while (token != NULL) {
+//            if (funcName == NULL) {
+//                funcName = token;
+//            } else {
+//                args[argCount++] = token;
+//            }
+//            token = strtok(NULL, ",\n");
+//        }
+//
+//        if (funcName != NULL) {
+//            callFunction(funcName, args, argCount);
+//        }
+//    }
 
     fclose(file);
     return 0;
