@@ -15,8 +15,7 @@ void callFunction(char *funcName, char **args, int argCount) {
         } else {
             printf("Invalid arguments for function: %s\n", funcName);
         }
-    } 
-
+    }
 
     // UNCOMMENT ME AFTER YOU HAVE WRITTEN MY FUNCTION
 
@@ -144,6 +143,8 @@ int main() {
         return 1;
     }
 
+    init_maps();
+
     User *user1 = create_user("kabeer", "kabeermakkar28@gmail.com");
     User *user2 = create_user("hamza", "hamza@gmail.com");
     User *user3 = create_user("shehraj", "shehraj@gmail.com");
@@ -153,6 +154,10 @@ int main() {
 
     add_friend(user1, user2);
     add_friend(user3, user2);
+
+    printf("Friends of hamza\n");
+    print_friends(user2);
+
 
   //  print_friends(user1);
 //    char line[MAX_LINE_LENGTH];
